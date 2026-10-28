@@ -27,6 +27,10 @@ p { color: var(--muted); }
 nav { display: grid; gap: 13px; margin-top: 57px; }
 nav a { width: fit-content; font-size: 14px; color: var(--muted); text-decoration: none; }
 nav a:hover { color: var(--blue); }
+.view-tabs { margin-top: 32px; gap: 8px; }
+.view-tabs a { color: var(--ink); }
+.view-tabs a[aria-current="page"] { color: var(--blue); text-decoration: underline; text-underline-offset: 6px; }
+.view-tabs + nav { margin-top: 28px; }
 .sidebar-bottom { margin-top: auto; padding-top: 40px; display: grid; gap: 8px; }
 .sidebar-bottom a, .print-button { display: flex; justify-content: space-between; width: 100%; text-align: left; font-size: 12px; color: var(--muted); text-decoration: none; }
 .sidebar-bottom a:hover, .print-button:hover { color: var(--blue); }
@@ -77,6 +81,36 @@ h3 { font-size: 17px; font-weight: 600; line-height: 1.5; letter-spacing: -.2px;
 .skip-link { position: fixed; top: -100px; left: 16px; z-index: 10; padding: 10px 16px; background: var(--blue); color: white; }
 .skip-link:focus { top: 16px; }
 
+/* Hall album: images keep their full composition, including portraits. */
+.hall-intro { padding: 65px 0 36px; }
+.hall-intro h1 { font-size: clamp(42px, 5vw, 64px); letter-spacing: -2px; margin: 16px 0 23px; }
+.hall-intro p { font-size: 17px; line-height: 1.85; max-width: 740px; }
+.hall-gallery { padding-bottom: 44px; }
+.hall-gallery:focus-visible { outline: 2px solid var(--blue); outline-offset: 8px; }
+.gallery-heading { border-top: 1px solid var(--line); padding-top: 24px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.gallery-heading h2 { font-size: 24px; }
+.gallery-controls { display: flex; align-items: center; gap: 14px; }
+.gallery-controls[hidden], .hall-thumbnails[hidden], .gallery-hint[hidden] { display: none; }
+.gallery-controls button { border: 1px solid var(--line); background: transparent; color: var(--blue); width: 40px; height: 40px; line-height: 1; font-size: 20px; }
+.gallery-controls button:hover { background: #e9edf9; border-color: var(--blue); }
+.gallery-counter { font: 12px/1.5 var(--mono); color: var(--muted); min-width: 40px; text-align: center; }
+.hall-slide { margin: 0; }
+.hall-slide[hidden] { display: none; }
+.hall-slide + .hall-slide { margin-top: 30px; }
+.hall-slide[hidden] + .hall-slide { margin-top: 0; }
+.hall-photo-frame { width: 100%; aspect-ratio: 3 / 2; background: #eeede8; }
+.hall-photo-frame img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.hall-slide figcaption { padding: 22px 0 0; }
+.hall-slide figcaption h3 { font-size: 19px; }
+.hall-slide figcaption p { margin-top: 10px; font-size: 15px; line-height: 1.85; }
+.hall-thumbnails { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 8px; margin-top: 27px; }
+.hall-thumbnail { border: 2px solid transparent; padding: 3px; background: none; min-width: 0; color: var(--muted); }
+.hall-thumbnail img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.hall-thumbnail span { display: block; font: 10px/1.5 var(--mono); margin-top: 5px; }
+.hall-thumbnail[aria-pressed="true"] { border-color: var(--blue); color: var(--blue); }
+.hall-thumbnail:hover { background: #e9edf9; }
+.gallery-hint { font-size: 11px; margin-top: 12px; }
+
 @media (min-width: 1500px) {
   .site-layout { gap: 95px; }
   .intro { padding-top: 85px; }
@@ -95,6 +129,9 @@ h3 { font-size: 17px; font-weight: 600; line-height: 1.5; letter-spacing: -.2px;
   .sidebar-note { display: none; }
   nav { display: flex; flex-wrap: wrap; gap: 7px 22px; margin-top: 20px; }
   nav a { font-size: 12px; }
+  .view-tabs { margin-top: 19px; gap: 24px; }
+  .view-tabs a { font-size: 14px; }
+  .view-tabs + nav { margin-top: 16px; }
   .sidebar-bottom { display: none; }
   .intro { padding: 42px 0 46px; }
   h1 { font-size: 61px; margin-top: 18px; margin-bottom: 23px; }
@@ -107,6 +144,10 @@ h3 { font-size: 17px; font-weight: 600; line-height: 1.5; letter-spacing: -.2px;
   .item-heading { flex-wrap: wrap; gap: 3px 20px; }
   .featured-project { padding-left: 18px; }
   .contact { padding-bottom: 38px; }
+  .hall-intro { padding: 34px 0 30px; }
+  .hall-intro h1 { margin-top: 0; }
+  .hall-intro p { font-size: 15px; }
+  .hall-thumbnails { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
 }
 @media (max-width: 420px) {
   .site-layout { width: calc(100% - 40px); }
@@ -118,6 +159,10 @@ h3 { font-size: 17px; font-weight: 600; line-height: 1.5; letter-spacing: -.2px;
   .date { margin-top: 4px; }
   .skills > div { grid-template-columns: 1fr; gap: 2px; }
   .site-footer { font-size: 9px; }
+  .gallery-heading h2 { font-size: 21px; }
+  .gallery-controls { gap: 8px; }
+  .gallery-controls button { width: 36px; height: 36px; }
+  .gallery-counter { min-width: 34px; font-size: 11px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -145,4 +190,12 @@ h3 { font-size: 17px; font-weight: 600; line-height: 1.5; letter-spacing: -.2px;
   .contact-email { font-size: 13pt; }
   .contact-links a::after { content: ' (' attr(href) ')'; }
   a, .organisation { color: #222; }
+  .hall-intro { padding: 0 0 20px; }
+  .hall-intro h1 { font-size: 30pt; }
+  .hall-intro p { font-size: 10pt; }
+  .gallery-controls, .hall-thumbnails, .gallery-hint { display: none; }
+  .hall-slide, .hall-slide[hidden] { display: block; margin: 0 0 25px; break-inside: avoid; }
+  .hall-slide[hidden] + .hall-slide { margin-top: 0; }
+  .hall-photo-frame { height: 85mm; aspect-ratio: auto; }
+  .hall-slide figcaption p { font-size: 10pt; }
 }
