@@ -44,7 +44,7 @@ h1 { font: 400 clamp(54px, 6vw, 78px)/1.12 var(--serif); letter-spacing: -3.5px;
 .intro-heading { display: flex; align-items: center; gap: 24px; margin: 23px 0 25px; }
 .intro-heading h1 { margin: 0; }
 .profile-icon { display: block; flex: 0 0 104px; width: 104px; height: 104px; overflow: hidden; border-radius: 50%; background: #3e6286; }
-.profile-icon img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; transform: scale(1.7); transform-origin: 50% 20%; }
+.profile-icon img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 52% 59.5%; transform: scale(6); transform-origin: 52% 59.5%; }
 .intro-lead { color: var(--ink); font-size: 23px; line-height: 1.55; letter-spacing: -.45px; max-width: 650px; }
 .intro > p:not(.intro-label):not(.intro-lead) { max-width: 610px; margin-top: 18px; }
 .intro-contact { display: inline-block; margin-top: 25px; font-size: 14px; text-decoration: none; }
